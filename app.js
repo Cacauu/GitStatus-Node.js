@@ -6,6 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var gitstatus = require(__dirname+'/src/gitstatus.js');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.get('/', function(req, res) {
 	});
 });
 app.post('/create_widget', function(req, res){
+	gitstatus.test('Input');
 	res.render('create', {
 		title: 'New Widget',
 		type: req.body.type,
