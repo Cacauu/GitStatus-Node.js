@@ -30,17 +30,37 @@ if ('development' == app.get('env')) {
 
 app.get('/', function(req, res) {
 	res.render('index', {
-		title: 'GitStat us'
+		title: 'GitStatus'
 	});
 });
 app.post('/create_widget', function(req, res){
-	gitstatus.test('Input');
+	var w_url = 'http://'+req.headers.host+'/'+req.body.user+'/'+req.body.repo+'/issues?token='+req.body.token;
+	console.log(w_url);
 	res.render('create', {
 		title: 'New Widget',
 		type: req.body.type,
 		user: req.body.user,
 		repo: req.body.repo,
-		token: req.body.token
+		token: req.body.token,
+		widget_url: w_url
+	});
+});
+
+app.get('/:user/:repo/issues', function(req, res) {
+	var user = req.param('user');
+	var repo = req.param('repo');
+	var limit = req.param('limit');
+	var token = req.param('token');
+	gitstatus.issues(user, repo, 10, token, function(issues){
+		if (issues) {
+			res.render('issues', {
+				title: 'Issues',
+				issues: issues
+			});
+		}
+		else {
+			res.send('ERROR!');
+		}
 	});
 });
 
