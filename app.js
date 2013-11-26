@@ -64,6 +64,24 @@ app.get('/:user/:repo/issues', function(req, res) {
 	});
 });
 
+app.get('/:user/:repo/commits', function(req, res) {
+	var user = req.param('user');
+	var repo = req.param('repo');
+	var limit = req.param('limit');
+	var token = req.param('token');
+	gitstatus.commits(user, repo, 10, token, function(commits){
+		if (commits) {
+			res.render('commits', {
+				title: 'Commits',
+				commits: commits
+			});
+		}
+		else {
+			res.send('ERROR!');
+		}
+	});
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

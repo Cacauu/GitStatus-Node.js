@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	if commits
+		table
+			for single_commit in commits
+				tr
+					td(style="width: 75%")= single_commit.commit.message
+					td(style="width: 25%")= single_commit.committer.login
+	else
+		p No Commits!
