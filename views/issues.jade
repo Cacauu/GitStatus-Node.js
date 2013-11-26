@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	if issues
+		table
+			for issue in issues
+				tr
+					td= issue.title
+					td= issue.user.login
+	else
+		p No Issues!
