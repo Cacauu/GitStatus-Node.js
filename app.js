@@ -7,6 +7,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var gitstatus = require(__dirname+'/src/gitstatus.js');
+var request = require('request');
 
 var app = express();
 
