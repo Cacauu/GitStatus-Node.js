@@ -6,6 +6,7 @@ block content
 			for issue in issues
 				tr
 					td(style="width: 70%")= issue.title
-					td(style="width: 30%")= issue.user.login
+					td(style="width: 5%") <img style="width: 100%; height: auto;" src="#{issue.user.avatar_url}" />
+					td(style="width: 25%")= issue.user.login
 	else
 		p No Issues!
