@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	if collaborators
+		table
+			for collaborator in collaborators
+				tr
+					td(style="width: 90%")= collaborator.login
+					td(style="width: 10%") <img style="width: auto; height: 100%;" src="#{collaborator.avatar_url}" />
+	else
+		p No Commits!
