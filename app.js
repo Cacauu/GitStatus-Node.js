@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
 	});
 });
 app.post('/create_widget', function(req, res){
-	var w_url = 'http://'+req.headers.host+'/'+req.body.user+'/'+req.body.repo+'/issues?token='+req.body.token;
+	var w_url = 'http://'+req.headers.host+'/'+req.body.user+'/'+req.body.repo+'/'+req.body.type+'?token='+req.body.token;
 	console.log(w_url);
 	res.render('create', {
 		title: 'New Widget',
