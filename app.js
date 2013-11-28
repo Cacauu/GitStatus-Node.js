@@ -99,6 +99,24 @@ app.get('/:user/:repo/collaborators', function(req, res) {
 	});
 });
 
+app.get('/:user/:repo/releases', function(req, res) {
+	var user = req.param('user');
+	var repo = req.param('repo');
+	var token = req.param('token');
+	gitstatus.releases(user, repo, 10, token, function(releases){
+		if (releases) {
+			console.log(releases);
+			res.render('releases', {
+				title: 'Releases',
+				releases: releases
+			});
+		}
+		else {
+			res.send('ERROR!');
+		}
+	});
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

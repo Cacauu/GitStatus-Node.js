@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	if releases
+		table
+			for release in releases
+				tr
+					td(style="width: 50%")= release.name
+					td(style="width: 30%")= release.tag_name
+					td(style="width: 20%")= release.published_at
+	else
+		p No Releases!
