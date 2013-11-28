@@ -1,16 +1,17 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
-	p GitStatus is a Node.js application that builds widgets for Statusboard for iPad to show information about GitHub repos
+	#wrapper
+		h1= title
+		p Welcome to #{title}
+		p GitStatus is a Node.js application that builds widgets for Statusboard for iPad to show information about GitHub repos
 
-	h2 Use GitStatus
-	p Create a new widget
-	<form method="post" action="create_widget">
-	p Repo: <input type="text" name="repo" placeholder="GitStatus-Node.js" />
-	p Owner: <input type="text" name="user" placeholder="Cacauu" />
-	p Access Token: <input type="text" name="token" placeholder="12345ABC" /> ADD INFORMATION
-	p Type: <select name="type"><option value="graph">Graph</option><option value="commits">Commit Table</option><option value="issues">Issue Table</option><option value="releases">Release Table</option></select>
-	p <input type="submit" value="Create widget" />
-	</form>
+		h2 Use GitStatus
+		p Create a new widget
+		<form method="post" action="create_widget">
+		p Repo: <input type="text" name="repo" placeholder="GitStatus-Node.js" />
+		p Owner: <input type="text" name="user" placeholder="Cacauu" />
+		p Access Token: <input type="text" name="token" placeholder="12345ABC" /> ADD INFORMATION
+		p Type: <select name="type"><option value="graph">Graph</option><option value="commits">Commit Table</option><option value="issues">Issue Table</option><option value="releases">Release Table</option></select>
+		p <input type="submit" value="Create widget" />
+		</form>
