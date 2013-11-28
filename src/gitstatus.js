@@ -25,7 +25,6 @@ exports.issues = function(user, repo, limit, token, callback) {
 
 exports.commits = function(user, repo, limit, token, callback) {
 	var url = 'https://api.github.com/repos/'+user+'/'+repo+'/commits?access_token='+token;
-	console.log('URL: '+url);
 	request({
 		uri: url,
 		headers: {
